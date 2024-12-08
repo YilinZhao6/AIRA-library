@@ -7,7 +7,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <div className="min-h-screen bg-background-light dark:bg-background-dark" style={{ fontFamily: 'Futura, system-ui, sans-serif' }}>
+    <div className="min-h-screen bg-background-light dark:bg-background-dark" style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
       <header className="py-6 px-8 border-b border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark sticky top-0 z-50">
         <nav className="max-w-7xl mx-auto flex justify-between items-center">
           <Link to="/" className="flex flex-col">
