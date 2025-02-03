@@ -5,7 +5,7 @@ import PaperCard from '../components/PaperCard';
 
 const SIDEBAR_WIDTH = '16rem';
 const GRID_GAP = '2rem';
-const PAPERS_PER_ROW = 2;
+const PAPERS_PER_ROW = 4;
 
 const ArchivePage = () => {
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
