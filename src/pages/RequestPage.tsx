@@ -28,26 +28,31 @@ const RequestPage = () => {
     setIsSubmitting(true);
     setErrorMessage("");
 
-    // Using the working Google Apps Script URL
-    const sheetUrl = "https://script.google.com/macros/s/AKfycbzi7o13izSdCIgPRnDnZtP4cFbZfd2DaOHGi4r506wt5xH9G0ZvUMUqA_sKpaQn2QxR/exec";  // Your Google Apps Script Web App URL
+    const sheetUrl = "https://script.google.com/macros/s/AKfycbwe_iu4d43KU3VdLIuDS2j4w5GhxM8SnoKzF6VQXkzj3GEaTzgmcOBPIykq4OPI0nTe/exec";
 
     try {
+      // Using the CORS-bypass approach
       const response = await fetch(sheetUrl, {
+        redirect: "follow", // Important for bypassing CORS
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "text/plain;charset=utf-8", // Important for bypassing CORS
         },
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
       const result = await response.text();
       console.log("🔹 Response from Google Apps Script:", result);
 
-      if (result.includes("Success")) {
+      // Try to parse the response as JSON
+      let jsonResult;
+      try {
+        jsonResult = JSON.parse(result);
+      } catch (e) {
+        console.error("Failed to parse response as JSON:", e);
+      }
+
+      if (jsonResult?.status === "success" || result.includes("success")) {
         setIsSuccess(true);
         // Reset form data on success
         setFormData({
@@ -113,6 +118,7 @@ const RequestPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
+          {/* Rest of your form JSX remains exactly the same */}
           <div className="space-y-8">
             <h2 className="text-xl font-semibold border-b border-border-light dark:border-border-dark pb-4 text-gray-900 dark:text-gray-100">
               Paper Details
