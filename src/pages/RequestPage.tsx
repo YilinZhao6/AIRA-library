@@ -29,7 +29,7 @@ const RequestPage = () => {
     setErrorMessage("");
 
     // Using the working Google Apps Script URL
-    const sheetUrl = "https://script.google.com/macros/s/AKfycbya_95p3y8DkR3pER8YJM7j2yJesQTSzqDmcrm5BaLHqmy5eWKkPygzR8GCPLgXrWhv/exec";  // Your Google Apps Script Web App URL
+    const sheetUrl = "https://script.google.com/macros/s/AKfycbzi7o13izSdCIgPRnDnZtP4cFbZfd2DaOHGi4r506wt5xH9G0ZvUMUqA_sKpaQn2QxR/exec";  // Your Google Apps Script Web App URL
 
     try {
       const response = await fetch(sheetUrl, {
